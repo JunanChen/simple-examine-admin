@@ -1,9 +1,7 @@
 const zh = {
     // layout
     commons: {
-      xiaoai: '小爱',
       admin: '管理员',
-      editor: '赵晓编',
       quit: '退出',
       hi: '您好',
       index: '首页',
@@ -41,6 +39,7 @@ const zh = {
       permission: '权限管理',
       systemSetting: '系统设置',
       systemLogs: '日志管理',
+      druid_monitor: 'druid 监听',
       daily: '日常管理',
       dept: '部门管理',
       attendance: '考勤签到',

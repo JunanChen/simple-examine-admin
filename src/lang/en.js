@@ -40,6 +40,7 @@ const zh = {
       permission: 'permission',
       systemSetting: 'systemSetting',
       systemLogs: 'systemLogs',
+      druid_monitor: 'druidMonitor',
       daily: 'daily',
       dept: 'dept',
       attendance: 'attendance',

@@ -126,15 +126,7 @@ import axios from '@/utils/axios'
         data(){
             return {
                 tableLoading: true,
-                tableData:[
-                    {
-                       messId: 'asdfoijsdf',
-                       messName: '陈俊安',
-                       messDesc: '这里是描述',
-                       messTime: '1998-06-20 12:22:34',
-                       messStat: 0
-                    }
-                ],
+                tableData:[],
                 page: {
                     pageNow: 1,
                     totalCount: 1,

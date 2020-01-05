@@ -249,6 +249,15 @@ export const asyncRouterMap = [
 				  	routerType:'leftmenu'
 				},
 				component: () => import('@/page/system/logs'),
+			},
+			{
+				path:'druid_monitor',
+				name: 'druid_monitor', 
+				meta:{
+					title:'druid监控', 					
+				  	routerType:'leftmenu'
+				},
+				component: () => import('@/page/system/druid_monitor'),
 			}
 		]
 	},

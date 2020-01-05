@@ -78,7 +78,8 @@
                                     <span class="name">{{$t('commons.hi')}},</span>
                                     <span class='name avatarname'> {{ $t(`commons.${name}`)}}</span>
                                 </div>
-                                <img :src="avatar" class='avatar' alt="">
+                                <!-- <img :src="avatar" class='avatar' alt=""> -->
+                                <img src="https://www.anlazy.top/usr/uploads/2019/12/2835245287.jpg" class='avatar' alt="">
                             </template>
                             <el-menu-item index="2-1" @click="setDialogInfo('info')">{{ $t('commons.infoShow') }}</el-menu-item>
                             <el-menu-item index="2-2" @click="setDialogInfo('pass')">{{ $t('commons.infoModify') }}</el-menu-item>
