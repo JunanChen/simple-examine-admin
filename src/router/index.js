@@ -258,6 +258,15 @@ export const asyncRouterMap = [
 				  	routerType:'leftmenu'
 				},
 				component: () => import('@/page/system/druid_monitor'),
+			},
+			{
+				path:'swagger_interface',
+				name: 'swagger_interface', 
+				meta:{
+					title:'swagger接口文档', 					
+				  	routerType:'leftmenu'
+				},
+				component: () => import('@/page/system/swagger_interface'),
 			}
 		]
 	},

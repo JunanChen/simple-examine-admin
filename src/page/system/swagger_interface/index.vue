@@ -10,7 +10,7 @@ import globle from '../../../globle'
 export default {
     data(){
         return{
-            url : globle.baseURL + '/druid',
+            url : globle.baseURL + '/swagger-ui.html',
         }
     },
     methods: {

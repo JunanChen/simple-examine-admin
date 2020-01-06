@@ -40,6 +40,7 @@ const zh = {
       systemSetting: '系统设置',
       systemLogs: '日志管理',
       druid_monitor: 'druid 监听',
+      swagger_interface: 'swagger接口文档',
       daily: '日常管理',
       dept: '部门管理',
       attendance: '考勤签到',

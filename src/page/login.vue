@@ -90,7 +90,6 @@
 								setToken("Token",res.data.sessionId)
 								this.$store.dispatch('initLeftMenu'); //设置左边菜单始终为展开状态
 								setToken("ipAddress",res.data.ipAddress)
-								console.log(res.data.ipAddress)
 								setTimeout(function() {
 									location.reload()
 								},2000)

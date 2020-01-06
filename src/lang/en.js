@@ -41,6 +41,7 @@ const zh = {
       systemSetting: 'systemSetting',
       systemLogs: 'systemLogs',
       druid_monitor: 'druidMonitor',
+      swagger_interface: 'swagger interface',
       daily: 'daily',
       dept: 'dept',
       attendance: 'attendance',

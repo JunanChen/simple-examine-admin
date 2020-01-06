@@ -15,7 +15,7 @@
 								<div class="pay taxBgcolor data_list rflex">
 									<div class="leftItem cflex wflex">
 										<p class="investor">今日巡检</p>
-										<p class="number"><animate-number from="1" to="132"></animate-number><span class="perTitle">(项)</span></p>
+										<p class="number"><animate-number from="1" :to="headerData.needNums"></animate-number><span class="perTitle">(项)</span></p>
 									</div>
 									<div class="rightItem">
 										<icon-svg icon-class="el-icon-s-flag" />
@@ -26,8 +26,8 @@
 								<div class="pay saleBgcolor data_list rflex">
 									<div class="leftItem cflex wflex">
 										<p class="investor">今日已巡检</p>
-										<p class="number"><animate-number from="1" to="32"></animate-number><span class="perTitle">(项)</span></p>
-										<p class="cardText">约占<animate-number from="1" to="30"></animate-number>%</p>
+										<p class="number"><animate-number from="1" :to="headerData.workedNums"></animate-number><span class="perTitle">(项)</span></p>
+										<p class="cardText">约占<animate-number from="1" to="0"></animate-number>%</p>
 									</div>
 									<div class="rightItem">
 										<icon-svg icon-class="el-icon-s-claim" />
@@ -38,8 +38,8 @@
 								<div class="linkBgColor data_list rflex">
 									<div class="leftItem cflex wflex">
 										<p class="investor">今日设备故障</p>
-										<p class="number"><animate-number from="1" to="10"></animate-number><span class="perTitle">(次)</span></p>
-										<p class="cardText"><animate-number from="1" to="30"></animate-number>%已处理</p>
+										<p class="number"><animate-number from="1" :to="headerData.failedNums"></animate-number><span class="perTitle">(次)</span></p>
+										<p class="cardText"><animate-number from="1" to="0"></animate-number>%已处理</p>
 									</div>
 									<div class="rightItem">
 										<icon-svg icon-class="el-icon-warning" />
@@ -54,7 +54,7 @@
 								<div class="extenedBgcolor data_list rflex">
 									<div class="leftItem cflex wflex">
 										<p class="investor">巡检人员</p>
-										<p class="number"><animate-number from="1" to="686"></animate-number><span class="perTitle">(个)</span></p>
+										<p class="number"><animate-number from="1" :to="headerData.staffNums"></animate-number><span class="perTitle">(个)</span></p>
 										<p class="cardText">今日新增0%</p>
 									</div>
 									<div class="rightItem">
@@ -66,7 +66,7 @@
 								<div class="likeBgcolor data_list rflex">
 									<div class="leftItem cflex wflex">
 										<p class="investor">设备总数</p>
-										<p class="number"><animate-number from="1" to="1276"></animate-number><span class="perTitle">(台)</span></p>
+										<p class="number"><animate-number from="1" :to="headerData.equNums"></animate-number><span class="perTitle">(台)</span></p>
 										<p class="cardText">今日新增<animate-number from="0" to="0"></animate-number>%</p>
 									</div>
 									<div class="rightItem">
@@ -78,7 +78,7 @@
 								<div class="keleBgColor data_list rflex">
 									<div class="leftItem cflex wflex">
 										<p class="investor">已采集巡检记录</p>
-										<p class="number"><animate-number from="1" to="8845455"></animate-number><span class="perTitle">(条)</span></p>
+										<p class="number"><animate-number from="1" :to="headerData.patrolNums"></animate-number><span class="perTitle">(条)</span></p>
 										<p class="cardText"><animate-number from="1" to="80"></animate-number>%已进行统计</p>
 									</div>
 									<div class="rightItem">
@@ -117,20 +117,29 @@
 
 <script>
 	import { github } from "@/utils/env"
-	import examineArea from './components/examine-area-charts'   //巡检告警图
-	import examineWaring from './components/examine-waring-echarts'   //巡检告警图
-	import examineInfo from './components/examine-info-charts'    //本日巡检情况图
-	import examinerAtten from './components/examiner-atten'    //巡检员签到情况图
+	import examineArea from './components/examine-area-charts'   		//巡检告警图
+	import examineWaring from './components/examine-waring-echarts'   	//巡检告警图
+	import examineInfo from './components/examine-info-charts'    		//本日巡检情况图
+	import examinerAtten from './components/examiner-atten'    			//巡检员签到情况图
 	import examineMouthInfo from './components/examine-mouth-info-charts'    //本年度巡检情况图
 	import { getToken } from '@/utils/auth'
+	import { getHeaderData } from '@/api/index'
 
     export default {
     	data(){
     		return {
-			  github:github,
-			  dateTime: new Date(),
-			  indexTitle: "欢迎您，管理员，您的ip为 " + getToken("ipAddress") + "，当前日期为 " + new Date().getFullYear() + '年' + (new Date().getMonth() + 1) + '月' + new Date().getDate() + '日',
-    		}
+				github:github,
+				dateTime: new Date(),
+				indexTitle: "欢迎您，管理员，您的ip为 " + getToken("ipAddress") + "，当前日期为 " + new Date().getFullYear() + '年' + (new Date().getMonth() + 1) + '月' + new Date().getDate() + '日',
+				headerData: {
+					equNums: 4,
+					failedNums: 0,
+					needNums: 0,
+					patrolNums: 77,
+					staffNums: 6,
+					workedNums: 0
+				},
+			}
     	},
     	components: {
 			examineArea,
@@ -140,8 +149,10 @@
 			examineMouthInfo
 		},	
 		created(){
-		},
-    	mounted(){
+			getHeaderData().then(resp => {
+				console.log(resp)
+				this.headerData = resp.data.data
+			}).catch(err => {})
 		},
     	methods: {
     	}
